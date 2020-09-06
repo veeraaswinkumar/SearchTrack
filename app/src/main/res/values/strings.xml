@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Search Tracks</string>
+    <string name="search_playlist">Search playlist</string>
+    <string name="searchtracks">SearchTracks</string>
+</resources>
