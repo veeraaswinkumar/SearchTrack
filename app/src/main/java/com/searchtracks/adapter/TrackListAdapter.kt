@@ -25,14 +25,11 @@ class TrackListAdapter(var context: SearchListActivity,
             itemView.mCollectionName.setText(results.collectionName)
             itemView.mPrice.setText(results.collectionPrice.toString())
             itemView.imageView.loadImage(results.artworkUrl100)
-
+            itemView.imageView2.setButtonDrawable(R.drawable.custom_fav_drawable)
 
             itemView.imageView2.setOnCheckedChangeListener { buttonView, isChecked ->
                 if(isChecked==true){
-                    itemView.imageView2.setBackground(context.resources.getDrawable(R.drawable.ic_fav_filled))
                     update.mUpdateDatabase(results, 1)
-                }else{
-                    itemView.imageView2.setBackground(context.resources.getDrawable(R.drawable.ic_fav_border))
                 }
             }
         }
@@ -49,6 +46,10 @@ class TrackListAdapter(var context: SearchListActivity,
 
     override fun getItemCount(): Int {
         return results!!.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return position
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

@@ -22,19 +22,16 @@ class SavedlistAdapter(var context: SearchSavedList, var savedList: List<SearchE
             itemView.mCollectionName.setText(results.collectionName)
             itemView.mPrice.setText(results.collectionPrice.toString())
             itemView.imageView.loadImage(results.artworkUrl100)
-
+            itemView.imageView2.isChecked = true
+            itemView.imageView2.setButtonDrawable(R.drawable.custom_fav_drawable)
             itemView.imageView2.setOnCheckedChangeListener { buttonView, isChecked ->
-                if (isChecked == true) {
+                if (isChecked == false) {
                     Executor.ioThread(Runnable {
-                        itemView.imageView2.setBackground(context.resources.getDrawable(R.drawable.ic_fav_border))
                         update.mUpdateDatabase(results, 1, position)
                     })
                 }
             }
-            itemView.imageView2.setOnClickListener {
 
-
-            }
         }
 
 
@@ -47,6 +44,10 @@ class SavedlistAdapter(var context: SearchSavedList, var savedList: List<SearchE
 
     override fun getItemCount(): Int {
         return savedList.size
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return position
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

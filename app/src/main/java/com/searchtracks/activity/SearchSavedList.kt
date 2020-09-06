@@ -26,6 +26,7 @@ class SearchSavedList : BaseActivity() {
         toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
+        tvToolbarTitle.setText("cart")
         linearLayout.visibility = View.GONE
         mCartImg.visibility = View.GONE
 
@@ -35,11 +36,9 @@ class SearchSavedList : BaseActivity() {
 
     private fun mGetSavedList() {
         savedList = arrayListOf()
+        mListRecycler.layoutManager = LinearLayoutManager(this)
         Executor.ioThread(Runnable {
             savedList = doa.mGetallSavedData("1")
-            Log.e("Size", savedList.size.toString())
-            mListRecycler.layoutManager = LinearLayoutManager(this)
-
             mSavedListAdapter = SavedlistAdapter(this, savedList, object : SavedlistAdapter.UpdateDb {
                 override fun mUpdateDatabase(results: SearchEnt, i: Int, position: Int) {
                     doa.mRemoveCart(results.artistname)

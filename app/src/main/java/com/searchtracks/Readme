@@ -1,5 +1,12 @@
 
 //Test Cases
 
-1. type text to get results
-2. scroll down to get pagination results
+1. Here implemented the search the tracks with selected and deselected opions
+2. we implemented the task using the dagger, rxjava, room database, with the design pattern of MVVM
+3. once listing the api , after the stored some of the data using  Room Database
+4. once selected the heart icon, datas will be stored in the cart_list table in the Room database
+5. if we use the search option , it searches the values of artist name and track name contain in list and List the searched values
+6. cart icon in the toolbar will redirect to the Cart page
+7. There list the selected tracks from the Room database using the Fetching query
+8. if u Click again the fav icon in the Selected list page, i removed the selected row in the table
+
